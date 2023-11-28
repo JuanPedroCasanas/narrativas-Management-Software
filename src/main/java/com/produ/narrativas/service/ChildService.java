@@ -1,6 +1,7 @@
 package com.produ.narrativas.service;
 
 import com.produ.narrativas.model.Child;
+import com.produ.narrativas.model.Parent;
 import com.produ.narrativas.repository.ChildRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -37,5 +38,11 @@ public class ChildService {
 
     public void deleteChild(Child childToDelete) {
         childRepository.delete(childToDelete);
+    }
+
+    public Parent addParentToChild(Child c, Parent p) {
+        c.addParent(p);
+        childRepository.save(c);
+        return p;
     }
 }

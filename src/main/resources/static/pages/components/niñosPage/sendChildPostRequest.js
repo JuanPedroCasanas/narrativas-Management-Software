@@ -1,12 +1,20 @@
+import { fetchParentByDni } from "../fetchParentByDni.js";
+
 export function sendChildPostRequest(lastName, firstName, dni, birthDate, parent1, parent2) {
+
+
+
+
     const childData = { 
         lastName: lastName, 
         firstName: firstName,
         dni: dni,
         birthDate: birthDate,
-        parent1: parent1,
-        parent2: parent2 
+        parent1: fetchParentByDni(parent1),
+        parent2: fetchParentByDni(parent2)
     };
+
+
 
 
 

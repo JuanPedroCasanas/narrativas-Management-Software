@@ -22,7 +22,11 @@ export function setupFormValidation(submitBtn, form, page) {
                     let birthDate = new Date(e.birthdayField.value);
                     let parent2 = (e.parent2.value) ? e.parent2.value : '( ninguno )'; //checks if a value has been selected for parent 2 and overrides it text if it hasnt been selected
 
+
+
+
                     sendChildPostRequest(e.lastNameField.value, e.firstNameField.value, e.dniField.value, birthDate, e.parent1.value, e.parent2.value); //I send the null value in parent 2 as this is the way it should be stored in the db
+
                     createChildRecord(e.lastNameField.value, e.firstNameField.value, e.dniField.value, birthDate, e.parent1.value, parent2);
 
                     form.reset();

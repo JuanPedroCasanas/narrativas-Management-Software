@@ -16,6 +16,8 @@ public class ChildController {
     public ChildController(ChildService childService) {
         this.childService = childService;
     }
+
+
     @GetMapping("/get/{dni}")
     public Child getByDni(@PathVariable String dni) {
         return childService.getChild(dni);
