@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Database Entries</title>
+    <script src="../index.js"></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="min-vh-100">
+    <div class="profesionalesPage" id="addedBody">
+        <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3 mt-6">
+                        <!-- Search bar -->
+                        <input type="text" class="form-control pr-4 mx-2" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
+                        <!-- Dropdown button -->
+                        <button class="btn btn-outline-secondary dropdown-toggle searchOptions mx-2" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Buscar por apellido <!--Valor por defecto-->
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#" onclick="updateSearchBy('Buscar por apellido')">Buscar por apellido</a>
+                            <a class="dropdown-item" href="#" onclick="updateSearchBy('Buscar por nombre')">Buscar por nombre</a>
+                            <a class="dropdown-item" href="#" onclick="updateSearchBy('Buscar por dni')">Buscar por dni</a>
+                            <a class="dropdown-item" href="#" onclick="updateSearchBy('Buscar por profesional')">Buscar por profesion</a>
+                        </div>
+                        <!-- Additional button for search action -->
+                        <div class="input-group-append mx-2">
+                            <button class="btn btn-outline-secondary" type="button">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-2 d-flex justify-content-evenly align-middle">
+                    <button type="button" class="btn btn-success">
+                        <i class="bi bi-plus"></i>Nuevo profesional
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-1 fw-semibold">Apellido</div>
+                            <div class="col-md-1 fw-semibold">Nombre</div>
+                            <div class="col-md-1 fw-semibold">Dni</div>
+                            <div class="col-md-1 fw-semibold">Contacto</div>
+                            <div class="col-md-1 fw-semibold">Profesion</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row d-flex align-middle">
+                            <div class="col-md-1">Perez</div>
+                            <div class="col-md-1">Pepe</div>
+                            <div class="col-md-1">353243123</div>
+                            <div class="col-md-1">13</div>
+                            <div class="col-md-1">psicologo</div>
+                            <div class="col-md-1 d-flex gap-2">
+                                <button type="button" class="btn btn-primary">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                                <button type="button" class="btn btn-warning">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="bi bi-x"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+</body>
+
+</html>

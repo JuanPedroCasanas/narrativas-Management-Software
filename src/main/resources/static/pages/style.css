@@ -1,0 +1,21 @@
+nav, .offcanvas {
+  background-color: #1E293B;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar-nav > li:hover {
+  background-color:#323E52 ;
+}
+
+.fill {
+  min-height: 100vh;
+  height: 100%;
+}

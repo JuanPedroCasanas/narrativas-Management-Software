@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Database Entries</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./style.css">
+    
+
+
+</head>
+
+<body class="min-vh-100">
+    <div class="niñosPage" id="addedBody">
+        <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3 mt-6">
+                        <!-- Search bar -->
+                        <input type="text" class="form-control pr-4 mx-2" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
+                        <!-- Dropdown button -->
+                        <button class="btn btn-outline-secondary dropdown-toggle searchOptions mx-2" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Buscar por apellido <!--Valor por defecto-->
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#" data-value="Buscar por apellido">Buscar por apellido</a>
+                            <a class="dropdown-item" href="#" data-value="Buscar por nombre">Buscar por nombre</a>
+                            <a class="dropdown-item" href="#" data-value="Buscar por dni">Buscar por dni</a>
+                            <a class="dropdown-item" href="#" data-value="Buscar por profesional">Buscar por profesional</a>
+                        </div>
+                        <!-- Additional button for search action -->
+                        <div class="input-group-append mx-2">
+                            <button class="btn btn-outline-secondary" type="button">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-2 d-flex justify-content-evenly align-middle">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#newChildModal">
+                        <i class="bi bi-plus"></i>Nuevo niño
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-1 fw-semibold">Apellido</div>
+                                <div class="col-md-1 fw-semibold">Nombre</div>
+                                <div class="col-md-1 fw-semibold">Dni</div>
+                                <div class="col-md-1 fw-semibold">Edad</div>
+                                <div class="col-md-2 fw-semibold">Padre 1</div>
+                                <div class="col-md-2 fw-semibold">Padre 2</div>
+                            </div>
+                        </div>
+                        <!--CARD BODY-->
+                        <div class="card-body" id="childrenRecords">
+                            <div class="row d-flex align-middle pt-1 pb-1">
+                                <div class="col-md-1">Perez</div>
+                                <div class="col-md-1">Pepe</div>
+                                <div class="col-md-1">353243123</div>
+                                <div class="col-md-1">13</div>
+                                <div class="col-md-2">Perez Ricardo</div>
+                                <div class="col-md-2">Gonzales Maria</div>
+                                <div class="col-md-1 d-flex gap-2">
+                                    <button type="button" class="btn btn-primary" title="Ver en detalle">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-warning" title="Editar Niño">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-success" title="Agregar Informe">
+                                        <i class="bi bi-folder-plus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-info" title="Ver informes">
+                                        <i class="bi bi-archive"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" title="Eliminar Registro">
+                                        <i class="bi bi-x"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-secondary" id="prevBtn" disabled>
+                                    <i class="bi bi-chevron-left"></i> Previous
+                                </button>
+                                <button type="button" class="btn btn-secondary" id="nextBtn">
+                                    Next <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--POP UP FORM DE NUEVO NIÑO-->
+    <div class="modal fade" id="newChildModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir nuevo niño</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <form id="newChildForm">
+                        <div class="mb-3">
+                            <label for="firstNameField" class="form-label">Nombre(s)</label>
+                            <input type="name" class="form-control" name="firstNameField" id="firstNameField" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="lastNameField" class="form-label">Apellido(s)</label>
+                            <input type="name" class="form-control" name="lastNameField" id="lastNameField" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dniField" class="form-label">DNI</label>
+                            <input type="name" class="form-control" name="dniField" id="dniField" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="birthdayField" class="form-label">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" name="birthdayField" id="birthdayField" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="parent1" class="form-label">Padre / Tutor</label>
+                            <select class="form-select" name="parent1" id="parent1" required>
+                                <option value="">( ninguno )</option>
+                                <option value="shelve2">yyy</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="parent2" class="form-label">Padre / Tutor</label>
+                            <select class="form-select" name="parent2" id="parent2">
+                                <option value="">( ninguno )</option> <!--THESE NEED TO BE POPULATE DYNAMICALLY WITH A JS FUNC-->
+                                <option value="shelve2">yyy</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" id="submitButton" class="btn btn-primary">Agregar niño</button> <!--THIS SHOULD CALL A SAVE CHANGES JS FUNC-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    </div>
+
+</body>
+
+</html>
