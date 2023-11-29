@@ -1,11 +1,11 @@
 import { createChildRecord } from "./niñosPage/createChildRecord.js";
 import { sendChildPostRequest } from "./niñosPage/sendChildPostRequest.js";
 import { createParentRecord } from "./padresPage/createParentRecord.js";
+import { fetchParentByDni } from "./fetchParentByDni.js";
 
 export function setupFormValidation(submitBtn, form, page) {
 
-    submitBtn.addEventListener("click", (event) => { 
-        
+    submitBtn.addEventListener("click", (event) => {
 
         event.preventDefault(); // Prevent form submission for now
 
@@ -20,12 +20,23 @@ export function setupFormValidation(submitBtn, form, page) {
                     e = form.elements;
 
                     let birthDate = new Date(e.birthdayField.value);
-                    let parent2 = (e.parent2.value) ? e.parent2.value : '( ninguno )'; //checks if a value has been selected for parent 2 and overrides it text if it hasnt been selected
 
 
 
 
-                    sendChildPostRequest(e.lastNameField.value, e.firstNameField.value, e.dniField.value, birthDate, e.parent1.value, e.parent2.value); //I send the null value in parent 2 as this is the way it should be stored in the db
+                    let parent1Dni;
+                    let parent2Dni;
+
+                    parent1Dni = e.parent1.value.split(":")[1].trim();
+
+                    parent2Dni = (e.parent2.value) ?  e.parent2.value.split(":")[1].trim() : null;
+
+                    let parent2 = (e.parent2.value) ?  e.parent2.value : "( ninguno )";
+
+
+
+
+                    sendChildPostRequest(e.lastNameField.value, e.firstNameField.value, e.dniField.value, birthDate, parent1Dni, parent2Dni); //I send the null value in parent 2 as this is the way it should be stored in the db
 
                     createChildRecord(e.lastNameField.value, e.firstNameField.value, e.dniField.value, birthDate, e.parent1.value, parent2);
 

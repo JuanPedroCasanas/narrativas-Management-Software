@@ -1,5 +1,5 @@
 import { createParentOption } from "./createParentOption.js";
-export function fetchParents() {
+export async function fetchParents() {
 
     fetch("/getParents")
     .then(response => response.ok ? response.text() : Promise.reject(new Error("Fallo en la conexión")))
