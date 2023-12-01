@@ -1,20 +1,25 @@
 package com.produ.narrativas.web;
 
+import com.produ.narrativas.model.Parent;
 import com.produ.narrativas.service.ChildService;
 import com.produ.narrativas.model.Child;
+import com.produ.narrativas.service.ParentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.time.LocalDate;
+import java.util.Map;
 
-import java.util.Date;
 
 @RestController
 public class ChildController {
 
+    private final ParentService parentService;
     private final ChildService childService;
 
     @Autowired
-    public ChildController(ChildService childService) {
+    public ChildController(ChildService childService, ParentService parentService) {
         this.childService = childService;
+        this.parentService = parentService;
     }
 
 
@@ -31,12 +36,22 @@ public class ChildController {
 
 
     @PostMapping("/addChild")
-    public Child addChild(@RequestBody Child requestBody) {
+    public Child addChild(@RequestBody Map<String, String> childData) {
+        String firstName = childData.get("firstName");
+        String lastName = childData.get("lastName");
+        String dni = childData.get("dni");
+        LocalDate birthDate = LocalDate.parse(childData.get("birthDate").split("T")[0]);
+        String parent1Dni = childData.get("parent1Dni");
+        String parent2Dni = childData.get("parent2Dni");
 
-                childService.addChild(requestBody);
-                System.out.println(requestBody.getBirthDate());
-                return requestBody;
-        }
+        Parent parent1 = parentService.getParent(parent1Dni);
+        Parent parent2 = parentService.getParent(parent2Dni);
+
+        Child newChild = new Child(firstName, lastName, dni, birthDate, parent1, parent2);
+
+        childService.addChild(newChild);
+        return newChild;
+    }
 
 
     @DeleteMapping("/deleteChild/{dni}")

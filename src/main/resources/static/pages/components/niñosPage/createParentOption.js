@@ -12,10 +12,12 @@ export function createParentOption(parent) {
     const newOption = document.createElement("option");
     newOption.textContent = lastName + ", " + firstName +", DNI: " + dni;
     newOption.value = lastName + ", " + firstName +", DNI: " + dni;
+    newOption.classList.add("parentOption");
 
-    const newOptionClone = newOption.cloneNode();
+    const newOptionClone = document.createElement("option");
     newOptionClone.textContent = lastName + ", " + firstName +", DNI: " + dni;
     newOptionClone.value = lastName + ", " + firstName +", DNI: " + dni;
+    newOptionClone.classList.add("parentOption");
 
     select1.appendChild(newOption);
     select2.appendChild(newOptionClone);

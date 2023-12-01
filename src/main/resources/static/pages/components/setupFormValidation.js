@@ -21,9 +21,6 @@ export function setupFormValidation(submitBtn, form, page) {
 
                     let birthDate = new Date(e.birthdayField.value);
 
-
-
-
                     let parent1Dni;
                     let parent2Dni;
 
@@ -32,9 +29,6 @@ export function setupFormValidation(submitBtn, form, page) {
                     parent2Dni = (e.parent2.value) ?  e.parent2.value.split(":")[1].trim() : null;
 
                     let parent2 = (e.parent2.value) ?  e.parent2.value : "( ninguno )";
-
-
-
 
                     sendChildPostRequest(e.lastNameField.value, e.firstNameField.value, e.dniField.value, birthDate, parent1Dni, parent2Dni); //I send the null value in parent 2 as this is the way it should be stored in the db
 
